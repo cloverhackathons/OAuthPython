@@ -1,12 +1,13 @@
 import flask
 import requests
-
 import config
 
-# Set these values in config.py.
 CLIENT_ID = config.CLIENT_ID
 CLIENT_SECRET = config.CLIENT_SECRET
 ENV = "https://sandbox.dev.clover.com"
+
+if not CLIENT_ID or CLIENT_SECRET:
+    raise ValueError("Set your CLIENT_ID and CLIENT_SECRET in config.py.")
 
 app = flask.Flask(__name__)
 
@@ -40,9 +41,7 @@ def oauth_callback():
     if not code:
         return flask.redirect("/")
 
-    # Use the code with your app ID and app secret (found in your app's Settings
-    # page on your Developer Dashboard and set in config.py) to request an
-    # access_token.
+    # Use the code with your app ID and app secret to request an access_token.
     request = "%s/oauth/token?client_id=%s&client_secret=%s&code=%s" % (ENV, CLIENT_ID, CLIENT_SECRET, code)
 
     try:
