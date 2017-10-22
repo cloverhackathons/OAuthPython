@@ -6,7 +6,7 @@ CLIENT_ID = config.CLIENT_ID
 CLIENT_SECRET = config.CLIENT_SECRET
 ENV = "https://sandbox.dev.clover.com"
 
-if not CLIENT_ID or CLIENT_SECRET:
+if not CLIENT_ID or not CLIENT_SECRET:
     raise ValueError("Set your CLIENT_ID and CLIENT_SECRET in config.py.")
 
 app = flask.Flask(__name__)
