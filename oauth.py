@@ -52,7 +52,7 @@ def oauth_callback():
         print e
 
     if access_token:
-        return access_token
+        return "Access token: "+access_token
     else:
         return "Could not retrieve access_token."
 
@@ -61,4 +61,4 @@ def oauth_callback():
 
 if __name__ == "__main__":
 
-    app.run(debug=True)
+    app.run(port=3000)
