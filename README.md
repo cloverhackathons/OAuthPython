@@ -8,13 +8,13 @@
 
 ## Set Up
 
-Follow these [instructions](https://docs.clover.com/build/web-apps/) for creating a Clover web app and installing it to your sandbox test merchant. When creating the app, select the [permissions](https://docs.clover.com/build/permissions/) you want the OAuth token to have.
+From the [Sandbox developer dashboard](https://sandbox.dev.clover.com/developers), create a Clover web app. When creating the app, select the [permissions](https://docs.clover.com/clover-platform/docs/permissions) that you want the OAuth token to have.
 
 * On the app's **Settings** page, note _App ID_ and _App Secret_. Set them as `CLIENT_ID` and `CLIENT_SECRET` in `config.py`.
-* Under **Web Configuration**, set _Site URL_ and _CORS Domain_ to `http://localhost:3000`.
+* Under **Web Configuration**, set _Site URL_ to `http://localhost:3000`.
 
 Run:
 * `pip install -r requirements.txt`
 * `python oauth.py`
 
-In your web browser, visit [http://localhost:3000/](http://localhost:3000/).
+In your web browser, open [http://localhost:3000/](http://localhost:3000/).
