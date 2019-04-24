@@ -12,13 +12,13 @@ if not CLIENT_ID or not CLIENT_SECRET:
 app = flask.Flask(__name__)
 
 
-@app.route('/', methods=['GET'])
+@app.route("/", methods=["GET"])
 def landing_page():
     """Depending on whether `code` parameter is present, redirects to
     oauth_callback or to Clover merchant login."""
 
     # A request from an authorized merchant includes a code in its query string.
-    code = flask.request.args.get('code')
+    code = flask.request.args.get("code")
 
     # If the request doesn't include a code, redirect the merchant to Clover's
     # authorize endpoint.
@@ -31,11 +31,11 @@ def landing_page():
         return flask.redirect("/oauth_callback?code=%s" % code)
 
 
-@app.route('/oauth_callback', methods=['GET'])
+@app.route("/oauth_callback", methods=["GET"])
 def oauth_callback():
     """Uses `code` with CLIENT_ID and CLIENT_SECRET to request access_token."""
 
-    code = flask.request.args.get('code')
+    code = flask.request.args.get("code")
 
     # The merchant shouldn't reach this endpoint without a code, but just in case:
     if not code:
@@ -47,12 +47,12 @@ def oauth_callback():
     try:
         response = requests.get(request)
         access_token = response.json().get("access_token")
-        print "Access token: ", access_token
+        print("Access token: ", access_token)
     except Exception as e:
-        print e
+        print(e)
 
     if access_token:
-        return "Access token: "+access_token
+        return "Access token: " + access_token
     else:
         return "Could not retrieve access_token."
 
